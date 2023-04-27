@@ -1,0 +1,136 @@
+{% extends "base.html" %}
+{% load static %}
+<!-- END nav -->
+{% block title %}
+    {% if category %}
+        {{ category.name }}
+    {% else %}
+        Продукты
+    {% endif %}
+{% endblock title %}
+{% block content %}
+    <div class="hero-wrap hero-bread"
+         style="background-image: url({% static 'images/bg_6.jpg' %})">
+        <div class="container">
+        </div>
+    </div>
+
+    <div class="row no-gutters slider-text align-items-center justify-content-center">
+                <div class="col-md-9 ftco-animate text-center">
+                    <p class="breadcrumbs">
+                        <span class="mr-2"><a href="{% url "shop:product_list" %}">Главная страница</a></span>
+                    </p>
+                    <h2 class="mb-0 bread">
+                        {% if category %}
+                            {{ category.name }}
+                        {% else %}
+                            Все товары
+                        {% endif %}
+                    </h2>
+                </div>
+            </div>
+
+    <section class="ftco-section bg-light">
+    <div class=""col-md-4 col-lg-2 sidebar"">
+        <div class="row">
+            <div class="col-sm-3">
+                <div id="sidebar">
+                    <h3>Каталог</h3>
+                    <ul>
+                        <li {% if not category %}class="selected"{% endif %}>
+                            <a href="{% url "shop:product_list" %}">Все</a>
+                        </li>
+                        {% for c in categories %}
+                            <li {% if category.slug == c.slug %}class="selected"{% endif %}>
+                                <a href="{{ c.get_absolute_url }}">{{ c.name }}</a>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+            <div class="col-sm-9">
+                <div class="product-list">
+
+                    {% for product in products %}
+                        <div class="item">
+                            <a href="{{ product.get_absolute_url }}">
+                                <img src="{% if product.image %} {{ product.image.url }} {% else %} {% static "img/no_image.png" %} {% endif %}">
+                            </a>
+                            <a href="{{ product.get_absolute_url }}">{{ product.name }}</a>
+                            <br>
+                            {{ product.price }} <span>&#8381;</span>
+                            <form action="{% url "cart:cart_add" product.id %}" method="post">
+							{{ cart_product_form }}
+							{% csrf_token %}
+							<input type="submit" value="Добавить" class="btn btn-black py-1 px-5">
+						</form>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+    </section>
+
+    {% block style %}
+        <style>
+            /* Стили для блока с категориями */
+            #sidebar {
+                float: right;
+                margin-left: 20px;
+            }
+
+            #sidebar ul {
+                list-style: none;
+                margin: 0;
+                padding: 0;
+            }
+
+            #sidebar ul li {
+                margin-bottom: 10px;
+            }
+
+            #sidebar ul li a {
+                color: #666;
+                text-decoration: none;
+            }
+
+            #sidebar ul li.selected a {
+                font-weight: bold;
+                color: #000;
+            }
+
+            /* Стили для блока с товарами */
+            .product-list {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: flex-start;
+                align-items: flex-start;
+            }
+
+            .item {
+                width: 250px;
+                margin: 10px;
+                text-align: center;
+            }
+
+            .item img {
+                max-width: 100%;
+                height: auto;
+            }
+
+            .item a {
+                font-size: 16px;
+                font-weight: bold;
+                text-decoration: none;
+                color: #333;
+            }
+
+            .item span {
+                font-size: 14px;
+                font-weight: normal;
+                color: #999;
+            }
+        </style>
+    {% endblock %}
+{% endblock content %}
