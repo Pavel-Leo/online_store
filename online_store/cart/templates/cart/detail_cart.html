@@ -43,7 +43,14 @@
                 </a>
               </td>
               <td>{{ product.name }}</td>
-              <td>{{ item.quantity }}</td>
+              <td>
+				 <form action="{% url "cart:cart_add" product.id %}" method="post">
+					{{ item.update_quantity_form.quantity }}
+					{{ item.update_quantity_form.override }}
+					<input type="submit" value="Update">
+					{% csrf_token %}
+				 </form>	
+			  </td>
               <td><a href="{% url "cart:cart_remove" product.id %}">Remove</a></td>
               <td class="num">${{ item.price }}</td>
               <td class="num">${{ item.total_price }}</td>
@@ -61,7 +68,7 @@
         <a href="{% url "shop:product_list" %}" class="button light">Continue shopping</a>
         <a href="#" class="button">Checkout</a>
     </p>
-						    
+
     		<div class="row justify-content-center">
     			<div class="col col-lg-5 col-md-6 mt-5 cart-wrap ftco-animate">
     				<div class="cart-total mb-3">
