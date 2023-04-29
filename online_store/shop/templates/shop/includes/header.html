@@ -43,7 +43,15 @@
 	          <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
 	          <li class="nav-item"><a href="blog.html" class="nav-link">Blog</a></li>
 	          <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
-	          <li class="nav-item cta cta-colored"><a href="{% url 'cart:cart_detail' %}" class="nav-link"><span class="icon-shopping_cart"></span>[0]</a></li>
+	          <li class="nav-item cta cta-colored"><a href="{% url 'cart:cart_detail' %}" class="nav-link"><span class="icon-shopping_cart"></span>
+					{% if cart|length > 0 %}
+							{{ cart|length }}
+					{% else %}
+						[0]
+					{% endif %}
+				
+			</div>
+				</a></li>
 
 	        </ul>
 	      </div>
