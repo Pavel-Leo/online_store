@@ -12,12 +12,12 @@ class OrderItemInline(admin.TabularInline):
 class OrderAdmin(admin.ModelAdmin):
     list_display = [
         "id",
-        "first_name",
-        "last_name",
+        "Имя",
+        "Фамилия",
         "email",
-        "address",
-        "postal_code",
-        "city",
+        "Адрес",
+        "Индекс",
+        "Город",
         "paid",
         "created",
         "updated",
