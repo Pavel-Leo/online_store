@@ -4,21 +4,6 @@
  * Copyright 2011-2018 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
-
- form label {
-  display: inline-block;
-  width: 150px;
-  text-align: right;
-  margin-right: 10px;
-}
-
-form input[type="text"],
-form input[type="email"],
-form select {
-  display: inline-block;
-  width: 250px;
-  margin-bottom: 10px;
-}
 :root {
   --blue: #007bff;
   --indigo: #6610f2;

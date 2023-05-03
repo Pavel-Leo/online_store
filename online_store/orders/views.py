@@ -3,15 +3,6 @@ from django.shortcuts import render
 
 from .forms import OrderCreateForm
 from .models import OrderItem
-import json
-from decimal import Decimal
-
-
-class DecimalJSONEncoder(json.JSONEncoder):
-    def default(self, obj):
-        if isinstance(obj, Decimal):
-            return float(obj)
-        return super(DecimalJSONEncoder, self).default(obj)
 
 
 def order_create(request):
@@ -27,7 +18,6 @@ def order_create(request):
                     price=item["price"],
                     quantity=item["quantity"],
                 )
-            # очистка корзины
             cart.clear()
             return render(
                 request, "orders/order/created.html", {"order": order}
