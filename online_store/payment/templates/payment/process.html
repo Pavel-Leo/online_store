@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+    Оплата заказа
+{% endblock title %}
+{% block content %}
+<div class="container">
+        <div class="row">
+            <div class="col-md-12 ftco-animate">
+                <div class="cart-list">
+                    <div class="row no-gutters align-items-left ">
+                        <div class="col-md-9 ftco-animate text-left">
+                            <br>
+                            <br>
+                            <h2 class="mb-0 bread">Проверьте ваш заказ до оплаты</h2>
+                            <br>
+                            <br>
+                       </div>
+                    </div>
+                            <table class="table">
+        <thead class="thead-primary">
+            <tr class="text-center">
+                <th>Изображение</th>
+                <th>Товар</th>
+                <th>Цена</th>
+                <th>Количество</th>
+                <th>Итого</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in order.items.all %}
+                <tr class="row{% cycle "1" "2" %}">
+                    <td>
+                        <img src="{% if item.product.image %}{{ item.product.image.url }} {% else %}{% static "img/no_image.png" %}{% endif %}"style="max-width: 150px; max-height: 150px;">
+                    </td>
+                    <td>{{ item.product.name }}</td>
+                    <td class="num">{{ item.price }} <span>&#8381;</span></td>
+                    <td class="num">{{ item.quantity }}</td>
+                    <td class="num">{{ item.get_cost }} <span>&#8381;</span></td>
+                </tr>
+            {% endfor %}
+            <tr class="total" style="font-size: 25px;">
+                <td >Итого</td>
+                <td colspan="3"></td>
+                <td class="num" style="font-size: 25px;">
+                    {{ order.get_total_cost }} <span>&#8381;</span>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <form action="{% url "payment:process" %}" method="post">
+        <button type="submit" class="btn btn-primary py-3 px-4">Перейти к оплате</button>
+        {% csrf_token %}
+    </form>
+    <br>
+{% endblock content %}

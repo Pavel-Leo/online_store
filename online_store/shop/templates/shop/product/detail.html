@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% load thumbnail %}
 {% load static %}
 {% block title %}
   {{ product.name }}
@@ -8,6 +9,9 @@
     	<div class="container">
     		<div class="row">
     			<div class="col-lg-6 mb-5 ftco-animate">
+					{% comment %} {% thumbnail product.image "100x100" crop="left" upscale=True as im %}
+						<img class="card-img my-2" src="{{ im.url }}">
+					{% endthumbnail %} {% endcomment %}
     				<img src= {{ product.image.url }}  class="img-fluid" alt="Colorlib Template"></a>
     			</div>
     			<div class="col-lg-6 product-details pl-md-5 ftco-animate">
