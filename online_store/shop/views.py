@@ -1,6 +1,7 @@
 from cart.forms import CartAddProductForm
 from django.shortcuts import get_object_or_404, render
 
+from . common import paginator_func
 from .models import Category, Product
 
 # def index(request):
@@ -18,13 +19,14 @@ def product_list(request, category_slug=None):
         category = get_object_or_404(Category, slug=category_slug)
         products = products.filter(category=category).select_related('category')
     cart_product_form = CartAddProductForm()
+    products_list = paginator_func(request, products)
     return render(
         request,
         "shop/product/list.html",
         {
             "category": category,
             "categories": categories,
-            "products": products,
+            "products_list": products_list,
             "cart_product_form": cart_product_form,
         },
     )
