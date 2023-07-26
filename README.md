@@ -7,14 +7,16 @@ Online-store - это многостраничное веб-приложение
 Интегрирована возможность тестовой онлайн оплаты корзины и разместить заказ.
 
 ## Технологии
-Python 3.7
-Django 2.2.19
-Celery
-Rabbitmq
-SMTP (Gmail)
-HTML 5
-JavaScript
-css
+Python 3.7,
+Django 2.2.19,
+Celery,
+Rabbitmq,
+SMTP (Gmail),
+HTML 5,
+JavaScript,
+css.
+
+## Как запустить проект
 
 Клонировать репозиторий и перейти в него в командной строке:
 
