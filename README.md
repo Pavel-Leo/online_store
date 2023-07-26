@@ -8,7 +8,7 @@ Online-store - это многостраничное веб-приложение
 
 ## Технологии
 Python 3.7,
-Django 2.2.19,
+Django 3.2.16,
 Celery,
 Rabbitmq,
 SMTP (Gmail),
