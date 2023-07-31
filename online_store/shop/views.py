@@ -40,3 +40,7 @@ def product_detail(request, id, slug):
         "shop/product/detail.html",
         {"product": product, "cart_product_form": cart_product_form},
     )
+
+
+def about(request):
+    return render(request, "about/about.html")
