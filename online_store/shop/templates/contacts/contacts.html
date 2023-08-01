@@ -5,37 +5,39 @@
     Контакты
 {% endblock title %}
 {% block content %}
-    <header style="color: #fff; text-align: center; padding: 1rem;">
-        <h1>Контакты организации</h1>
-    </header>
-    <div style="max-width: 800px; margin: 0 auto; padding: 2rem;">
-        <div style="margin-bottom: 1rem;">
+    <br>
+    <div style="max-width: 800px; margin: 0 auto;">
+        <div style="max-width: 800px; margin: 0 auto; ">
+            <div style="margin-bottom: 10px;">
+            <span style="color: #000; font-weight: bold; font-size: 1.5rem; line-height: 2.5;">Контакты:</span>
+        </div>
+        <div style="margin-bottom: 10px; line-height: 20px;">
             <label style="display: inline-block; width: 120px; font-weight: bold;">Организация:</label>
             <span style="color: #000;">ИП Леонтьев П.А.</span>
         </div>
-        <div style="margin-bottom: 1rem;">
+        <div style="margin-bottom: 10px; line-height: 20px;">
             <label style="display: inline-block; width: 120px; font-weight: bold;">ОГРН:</label>
             <span style="color: #000;">305690413420014</span>
         </div>
-        <div style="margin-bottom: 1rem;">
+        <div style="margin-bottom: 10px; line-height: 20px;">
             <label style="display: inline-block; width: 120px; font-weight: bold;">ИНН:</label>
-            <span style="color: #000;">509100348480</span>
+            <span style="color: #000; line-height: 1.2;">509100348480</span>
         </div>
-        <div style="margin-bottom: 1rem;">
+        <div style="margin-bottom: 10px; line-height: 20px;">
             <label style="display: inline-block; width: 120px; font-weight: bold;">Адрес:</label>
-            <span style="color: #000;">ул. Примерная, д. 123, г. Казань</span>
+            <span style="color: #000; line-height: 0.5;">ул. Примерная, д. 123, г. Казань</span>
         </div>
-        <div style="margin-bottom: 1rem;">
+        <div style="margin-bottom: 10px; line-height: 20px;">
             <label style="display: inline-block; width: 120px; font-weight: bold;">Телефон:</label>
-            <a href="tel:+79297232435" style="color: #000;">+7 (929) 723-24-35</a>
+            <a href="tel:+79297232435" style="color: #000; line-height: 0.5;">+7 (929) 723-24-35</a>
         </div>
-        <div style="margin-bottom: 1rem;">
+        <div style="margin-bottom: 10px; line-height: 20px;">
             <label style="display: inline-block; width: 120px; font-weight: bold;">Email:</label>
-            <a href="mailto:leontevpavel90@gmail.com" style="color: #000;">leontevpavel90@gmail.com</a>
+            <a href="mailto:leontevpavel90@gmail.com" style="color: #000; line-height: 0.5;">leontevpavel90@gmail.com</a>
         </div>
-        <div style="margin-bottom: 1rem;">
-            <label style="display: inline-block; width: 120px; font-weight: bold;">Сайт:</label>
-            <a href="https://github.com/Pavel-Leo" style="color: #000;">https://github.com/Pavel-Leo</a>
+        <div style="margin-bottom: 10px; line-height: 20px;">
+            <label style="display: inline-block; width: 120px; font-weight: bold; line-height: 0.5">Сайт:</label>
+            <a href="https://github.com/Pavel-Leo" style="color: #000; line-height: 0.5;">https://github.com/Pavel-Leo</a>
         </div>
         <br>
         <br>
@@ -43,7 +45,7 @@
            style="font-size: 1.4rem;
                   font-weight: bold;
                   color: #000">Есть вопросы или предложения? Напишите нам:</p>
-        <br>
+        {% comment %} <br> {% endcomment %}
         <form method="post" action="{% url 'shop:feedback' %}">
             {% csrf_token %}
             <div class="form-group">
