@@ -10,6 +10,7 @@ urlpatterns = [
     path("blog/", views.blog, name="blog"),
     path("contacts/", views.contacts, name="contacts"),
     path('feedback/', views.feedback_view, name='feedback'),
+    path("delivery/", views.delivery, name="delivery"),
     path(
         "<slug:category_slug>/",
         views.product_list,

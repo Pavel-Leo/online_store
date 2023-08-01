@@ -62,6 +62,10 @@ def contacts(request):
     return render(request, "contacts/contacts.html")
 
 
+def delivery(request):
+    return render(request, "about/delivery.html")
+
+
 def feedback_view(request):
     if request.method == 'POST':
         form = FeedbackForm(request.POST)
