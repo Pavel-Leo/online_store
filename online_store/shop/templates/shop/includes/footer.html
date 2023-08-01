@@ -23,9 +23,9 @@
             <div class="ftco-footer-widget mb-4 ml-md-5">
               <ul class="list-unstyled" style="text-align: left;">
                 <li><a href="{% url "shop:product_list" %}" class="py-2 d-block">На главную</a></li>
+                <li><a href="{% url 'cart:cart_detail' %}" class="py-2 d-block">Ваша корзина</a></li>
                 <li><a href="{% url "shop:about" %}" class="py-2 d-block">О нас</a></li>
                 <li><a href="#" class="py-2 d-block">Блог</a></li>
-                <li><a href="#" class="py-2 d-block">Обратная связь</a></li>
               </ul>
             </div>
           </div>
@@ -36,7 +36,7 @@
 	              <ul class="list-unstyled mr-l-5 pr-l-3 mr-4" style="text-align: left;">
 	                <li><a href="#" class="py-2 d-block">Доставка</a></li>
 	                <li><a href="#" class="py-2 d-block">Возврат и обмена</a></li>
-	                <li><a href="#" class="py-2 d-block">Обратная связь</a></li>
+	                <li><a href="{% url "shop:contacts" %}" class="py-2 d-block">Обратная связь</a></li>
 	                <li><a href="#" class="py-2 d-block">Защита персональных данных</a></li>
 	              </ul>
 
