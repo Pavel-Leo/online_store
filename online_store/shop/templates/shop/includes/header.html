@@ -9,13 +9,13 @@
                             <div class="icon mr-2 d-flex justify-content-center align-items-center">
                                 <span class="icon-phone2"></span>
                             </div>
-                            <span class="text"><a href="tel:+1235235598" class="text">+ 1235 2355 98</a></span>
+                            <span class="text"><a href="tel:+7(929)723-24-35" class="text">+7(929)723-24-35</a></span>
                         </div>
                         <div class="col-md pr-4 d-flex topper align-items-center">
                             <div class="icon mr-2 d-flex justify-content-center align-items-center">
                             <a href="mailto:coffee-kzn@mail.ru" </a><span class="icon-envelope"></span>
                         </div>
-                        <span class="text"><a href="mailto:coffee-kzn@mail.ru" class="text">coffee-kzn@mail.ru</a></span>
+                        <span class="text"><a href="mailto:leontevpavel90@gmail.com" class="text">leontevpavel90@gmail.com</a></span>
                     </div>
                     <div class="col-md-5 pr-4 d-flex topper align-items-center text-lg-right">
                         <span class="text">Доставка 3-5 рабочих дней</span>
@@ -58,13 +58,13 @@
                     </div>
                 </li>
                 <li class="nav-item">
-                    <a href="about.html" class="nav-link">About</a>
+                    <a href="{% url "shop:about" %}" class="nav-link">О нас</a>
                 </li>
                 <li class="nav-item">
-                    <a href="blog.html" class="nav-link">Blog</a>
+                    <a href="{% url "shop:blog" %}" class="nav-link">Блог</a>
                 </li>
                 <li class="nav-item">
-                    <a href="contact.html" class="nav-link">Contact</a>
+                    <a href="{% url "shop:contacts" %}" class="nav-link">Контакты</a>
                 </li>
                 <li class="nav-item cta cta-colored">
                 <a href="{% url 'cart:cart_detail' %}" class="nav-link"><span class="icon-shopping_cart"></span>

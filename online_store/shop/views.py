@@ -1,7 +1,11 @@
 from cart.forms import CartAddProductForm
+from django.conf import settings
+from django.core.mail import send_mail
 from django.shortcuts import get_object_or_404, render
 
-from . common import paginator_func
+from shop.forms import FeedbackForm
+
+from .common import paginator_func
 from .models import Category, Product
 
 # def index(request):
@@ -14,10 +18,14 @@ from .models import Category, Product
 def product_list(request, category_slug=None):
     category = None
     categories = Category.objects.all()
-    products = Product.objects.filter(available=True).select_related('category')
+    products = Product.objects.filter(available=True).select_related(
+        'category'
+    )
     if category_slug:
         category = get_object_or_404(Category, slug=category_slug)
-        products = products.filter(category=category).select_related('category')
+        products = products.filter(category=category).select_related(
+            'category'
+        )
     cart_product_form = CartAddProductForm()
     products_list = paginator_func(request, products)
     return render(
@@ -44,3 +52,34 @@ def product_detail(request, id, slug):
 
 def about(request):
     return render(request, "about/about.html")
+
+
+def blog(request):
+    return render(request, "blog/blog.html")
+
+
+def contacts(request):
+    return render(request, "contacts/contacts.html")
+
+
+def feedback_view(request):
+    if request.method == 'POST':
+        form = FeedbackForm(request.POST)
+        if form.is_valid():
+            question = form.cleaned_data['question']
+            email = form.cleaned_data['email']
+            subject = 'Обратная связь от пользователя'
+            message = (
+                f'Вопрос/Отзыв/Пожелание: {question}\nАдрес для ответа:'
+                f' {email}'
+            )
+            from_email = settings.EMAIL_HOST_USER
+            to_email = [
+                settings.EMAIL_HOST_USER
+            ]
+            send_mail(
+                subject, message, from_email, to_email, fail_silently=False
+            )
+    else:
+        form = FeedbackForm()
+    return render(request, 'contacts/contacts.html', {'form': form})

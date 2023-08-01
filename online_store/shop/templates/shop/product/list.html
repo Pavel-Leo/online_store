@@ -31,7 +31,7 @@
     <section class="ftco-section bg-light">
     <div class=""col-md-4 col-lg-2 sidebar"">
         <div class="row">
-            <div class="col-sm-3">
+            <div class="col-sm-2">
                 <div id="sidebar">
                     <h3>Каталог</h3>
                     <ul>
@@ -46,7 +46,7 @@
                     </ul>
                 </div>
             </div>
-            <div class="col-sm-9">
+            <div class="col-sm-10">
                 <div class="product-list">
 
                     {% for product in products_list %}
@@ -54,14 +54,15 @@
                             <a href="{{ product.get_absolute_url }}">
                                 <img src="{% if product.image %} {{ product.image.url }} {% else %} {% static "img/no_image.png" %} {% endif %}">
                             </a>
-                            <a href="{{ product.get_absolute_url }}">{{ product.name }}</a>
-                            <br>
-                            {{ product.price }} <span>&#8381;</span>
                             <form action="{% url "cart:cart_add" product.id %}" method="post">
 							{{ cart_product_form }}
 							{% csrf_token %}
-							<input type="submit" value="Добавить" class="btn btn-black py-1 px-5">
+							<input type="submit" value="В корзину" class="btn btn-black py-1 px-5">
 						</form>
+                            <a href="{{ product.get_absolute_url }}">{{ product.name }}</a>
+                            <br>
+                            {{ product.price }} <span>&#8381;</span>
+
                         </div>
                     {% endfor %}
                 </div>
@@ -108,7 +109,7 @@
             }
 
             .item {
-                width: 260px;
+                width: 180px;
                 margin: 10px;
                 text-align: center;
             }
@@ -119,7 +120,7 @@
             }
 
             .item a {
-                font-size: 16px;
+                font-size: 14px;
                 font-weight: bold;
                 text-decoration: none;
                 color: #333;
@@ -129,6 +130,12 @@
                 font-size: 14px;
                 font-weight: normal;
                 color: #999;
+            }
+
+            .item .btn {
+                margin-top: 10px;
+                font-size: 14px;
+                text-decoration: none;
             }
         </style>
     {% endblock %}

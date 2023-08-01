@@ -19,8 +19,6 @@ from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import include, path
 
-from shop import views
-
 # handler404 = "core.views.page_not_found"
 # handler403 = 'core.views.permission_denied'
 
@@ -29,7 +27,6 @@ urlpatterns = [
     path("cart/", include("cart.urls", namespace="cart")),
     path('orders/', include('orders.urls', namespace='orders')),
     path('payment/', include('payment.urls', namespace='payment')),
-    path("about/", views.about, name="about"),
     path("", include("shop.urls", namespace="shop")),
 ]
 
