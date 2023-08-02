@@ -74,6 +74,10 @@ def privacy_policy(request):
     return render(request, "about/privacy_policy.html")
 
 
+def how_to_buy(request):
+    return render(request, "about/how_to_buy.html")
+
+
 def feedback_view(request):
     if request.method == 'POST':
         form = FeedbackForm(request.POST)

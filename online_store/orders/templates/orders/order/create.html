@@ -5,7 +5,7 @@
     {% if category %}
         {{ category.name }}
     {% else %}
-        Продукты
+        Оформление заказа
     {% endif %}
 {% endblock title %}
 {% block content %}
@@ -83,7 +83,7 @@
                                     {{ form.as_p }}
                                     <div class="form-check">
                                         <input type="checkbox" class="form-check-input" id="id_agree" name="agree" required>
-                                        <label class="form-check-label" for="id_agree" style="color: black;">Согласие на обработку персональных данных.<br>Настоящим я подтверждаю, что я ознакомлен и согласен с <a href="{% url 'shop:public_offer' %}" style="color: #000; text-decoration: underline"> условиями оферты </a> и <a href="#" style="color: #000; text-decoration: underline"> политикой конфиденциальности.</a></label>
+                                        <label class="form-check-label" for="id_agree" style="color: black;">Согласие на обработку персональных данных.<br>Настоящим я подтверждаю, что я ознакомлен и согласен с <a href="{% url 'shop:public_offer' %}" style="color: #000; text-decoration: underline"target="_blank"> условиями оферты </a> и <a href="#" style="color: #000; text-decoration: underline" target="_blank"> политикой конфиденциальности.</a></label>
                                         {% if form.errors.agree %}
                                             <div class="invalid-feedback d-block">{{ form.errors.agree }}</div>
                                         {% endif %}
