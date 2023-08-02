@@ -218,7 +218,11 @@ button,
 [type="button"],
 [type="reset"],
 [type="submit"] {
-  -webkit-appearance: button; }
+  -webkit-appearance: button;
+  -moz-appearance: button;
+  -ms-appearance: button;
+  appearance: button;
+}
 
 button::-moz-focus-inner,
 [type="button"]::-moz-focus-inner,
@@ -237,7 +241,11 @@ input[type="date"],
 input[type="time"],
 input[type="datetime-local"],
 input[type="month"] {
-  -webkit-appearance: listbox; }
+  -webkit-appearance: listbox;
+  -moz-appearance: listbox;
+  -ms-appearance: listbox;
+  appearance: listbox;
+}
 
 textarea {
   overflow: auto;
@@ -269,7 +277,11 @@ progress {
 
 [type="search"] {
   outline-offset: -2px;
-  -webkit-appearance: none; }
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  -ms-appearance: none;
+  appearance: none;
+}
 
 [type="search"]::-webkit-search-decoration {
   -webkit-appearance: none; }
@@ -9539,11 +9551,12 @@ textarea.form-control {
 .mfp-with-zoom .mfp-container,
 .mfp-with-zoom.mfp-bg {
   opacity: 0;
-  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
   -webkit-transition: all 0.3s ease-out;
   -moz-transition: all 0.3s ease-out;
   -o-transition: all 0.3s ease-out;
-  transition: all 0.3s ease-out; }
+  transition: all 0.3s ease-out;
+}
 
 .mfp-with-zoom.mfp-ready .mfp-container {
   opacity: 1; }
