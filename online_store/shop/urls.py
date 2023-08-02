@@ -11,6 +11,8 @@ urlpatterns = [
     path("contacts/", views.contacts, name="contacts"),
     path('feedback/', views.feedback_view, name='feedback'),
     path("delivery/", views.delivery, name="delivery"),
+    path("public_offer/", views.public_offer, name="public_offer"),
+    path("privacy_policy/", views.privacy_policy, name="privacy_policy"),
     path(
         "<slug:category_slug>/",
         views.product_list,

@@ -66,6 +66,14 @@ def delivery(request):
     return render(request, "about/delivery.html")
 
 
+def public_offer(request):
+    return render(request, "about/public_offer.html")
+
+
+def privacy_policy(request):
+    return render(request, "about/privacy_policy.html")
+
+
 def feedback_view(request):
     if request.method == 'POST':
         form = FeedbackForm(request.POST)
