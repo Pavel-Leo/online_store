@@ -78,6 +78,10 @@ def how_to_buy(request):
     return render(request, "about/how_to_buy.html")
 
 
+def return_and_exchange(request):
+    return render(request, "about/return_and_exchange.html")
+
+
 def feedback_view(request):
     if request.method == 'POST':
         form = FeedbackForm(request.POST)
