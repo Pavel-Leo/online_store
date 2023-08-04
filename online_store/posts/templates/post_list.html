@@ -34,11 +34,10 @@
                         <a class="btn btn-primary" href="{% url 'posts:post_detail' post.slug %}"><strong>Читать далее</strong></a>
                     </p>
                 </div>
-
+            </article>
             {% if not forloop.last %}<hr>{% endif %}
         {% endfor %}
-    </div>
-        {% include "shop/includes/paginator_list.html" %}
 
-    </article>
+        {% include "shop/includes/paginator_list.html" %}
+    </div>
 {% endblock content %}
