@@ -1,5 +1,5 @@
 from cart.cart import Cart
-from django.shortcuts import render, redirect
+from django.shortcuts import redirect, render
 from django.urls import reverse
 
 from .forms import OrderCreateForm
@@ -9,6 +9,7 @@ from .tasks import order_created
 
 def order_create(request):
     cart = Cart(request)
+    price_with_delivery = cart.get_total_price() + 350
     if request.method == "POST":
         form = OrderCreateForm(request.POST)
         if form.is_valid():
@@ -31,5 +32,11 @@ def order_create(request):
     else:
         form = OrderCreateForm()
     return render(
-        request, "orders/order/create.html", {"cart": cart, "form": form}
+        request,
+        "orders/order/create.html",
+        {
+            "cart": cart,
+            "form": form,
+            "price_with_delivery": price_with_delivery,
+        },
     )

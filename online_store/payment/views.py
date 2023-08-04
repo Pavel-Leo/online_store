@@ -27,7 +27,7 @@ def payment_process(request):
                     "price_data": {
                         "currency": "RUB",
                         "product_data": {"name": item.product.name},
-                        "unit_amount": int(item.price * 100),
+                        "unit_amount": int((item.price + 350) * 100),
                     },
                     "quantity": item.quantity,
                 }

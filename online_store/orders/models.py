@@ -24,7 +24,7 @@ class Order(models.Model):
         return "Order {}".format(self.id)
 
     def get_total_cost(self):
-        return sum(item.get_cost() for item in self.items.all())
+        return sum(item.get_cost() for item in self.items.all()) + 350
 
 
 class OrderItem(models.Model):
