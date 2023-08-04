@@ -1,4 +1,3 @@
-<!-- Файл: articles.html -->
 {% extends "base.html" %}
 {% load thumbnail %}
 {% load static %}
@@ -15,23 +14,23 @@
 
     <div class="container py-5">
         {% for post in page_obj %}
-            <post>
-                <div style="float: left; margin-right: 10px;">
+            <article style="display: flex; align-items: flex-start;">
+                <div style="flex: 0 0 200px; margin-right: 10px;">
                     {% thumbnail post.image "200x200" upscale=False as im %}
-                        <img src="{{ im.url }}">
+                        <img src="{{ im.url }}" style="width: 100%;">
                     {% endthumbnail %}
                 </div>
-                <ul>
-                    <li style="color: black;">Дата публикации: {{ post.pub_date|date:"d E Y" }}</li>
-                </ul>
-                <h2 style="font-size: 1.5em; font-weight: bold; color: black;">{{ post.title }}</h2>
-                <p style="color: black;"> {{ post.text|safe|linebreaks|truncatewords:35 }}
-                <p class="link-read-post">
-    <a class="btn btn-primary" href="{% url 'posts:post_detail' post.slug %}"><strong>Читать далее</strong></a>
-</p>
-
-                <div style="clear: both;"></div>
-            </post>
+                <div style="flex: 1;">
+                    <ul style="list-style: none; padding: 0;">
+                        <li style="color: black; margin-bottom: 10px;">Дата публикации: {{ post.pub_date|date:"d E Y" }}</li>
+                    </ul>
+                    <h2 style="font-size: 1.5em; font-weight: bold; color: black;">{{ post.title }}</h2>
+                    <p style="color: black; margin-bottom: -40px">{{ post.text|safe|linebreaks|truncatewords:35 }}</p>
+                    <p class="link-read-post">
+                        <a class="btn btn-primary" href="{% url 'posts:post_detail' post.slug %}"><strong>Читать далее</strong></a>
+                    </p>
+                </div>
+            </article>
             {% if not forloop.last %}<hr>{% endif %}
         {% endfor %}
         {% include "shop/includes/paginator_list.html" %}
