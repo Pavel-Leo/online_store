@@ -2,6 +2,7 @@ import os
 from pathlib import Path
 
 from dotenv import load_dotenv
+from regex import P
 
 load_dotenv()
 
@@ -24,6 +25,7 @@ INSTALLED_APPS = [
     'cart.apps.CartConfig',
     'orders.apps.OrdersConfig',
     'payment.apps.PaymentConfig',
+    'posts.apps.PostsConfig',
     'sorl.thumbnail',
 ]
 
@@ -122,3 +124,4 @@ STRIPE_API_VERSION = '2022-08-01'
 STRIPE_WEBHOOK_SECRET = os.getenv("STRIPE_WEBHOOK_SECRET")
 
 PRODUCTS_PER_PAGE = 20
+POSTS_PER_PAGE = 10

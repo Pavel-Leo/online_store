@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% load thumbnail %}
+{% load static %}
+
+{% block title %}
+    {{ title }}
+{% endblock title %}
+
+{% block content %}
+    <div class="hero-wrap hero-bread" style="background-image: url({% static 'images/bg_6.jpg' %})">
+        <div class="container">
+        </div>
+    </div>
+
+    <div class="container py-5">
+        <article style="display: flex; align-items: flex-start;">
+            <div style="flex: 0 0 200px; margin-right: 10px;">
+                {% thumbnail post.image "200x200" upscale=False as im %}
+                    <img src="{{ im.url }}" style="width: 100%;">
+                {% endthumbnail %}
+            </div>
+            <div style="flex: 1;">
+                <ul style="list-style: none; padding: 0;">
+                    <li style="color: black; margin-bottom: 10px;">Дата публикации: {{ post.pub_date|date:"d E Y" }}</li>
+                </ul>
+                <h2 style="font-size: 1.5em; font-weight: bold; color: black;">{{ post.title }}</h2>
+                <p style="color: black;">{{ post.text|safe|linebreaks }}</p>
+            </div>
+        </article>
+    </div>
+{% endblock content %}

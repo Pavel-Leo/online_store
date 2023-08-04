@@ -54,10 +54,6 @@ def about(request):
     return render(request, "about/about.html")
 
 
-def blog(request):
-    return render(request, "blog/blog.html")
-
-
 def contacts(request):
     return render(request, "contacts/contacts.html")
 

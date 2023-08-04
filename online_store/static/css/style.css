@@ -5,6 +5,7 @@
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
 :root {
+  --black: #000;
   --blue: #007bff;
   --indigo: #6610f2;
   --purple: #6f42c1;
@@ -8012,7 +8013,8 @@ body {
   font-size: 15px;
   line-height: 1.8;
   font-weight: 400;
-  color: gray; }
+  color: black;
+}
   body.menu-show {
     overflow: hidden;
     position: fixed;
@@ -9816,7 +9818,7 @@ textarea.form-control {
     font-size: 12px;
     margin-right: 5px; }
     .block-21 .text .meta > div a {
-      color: gray; }
+      color: black; }
 
 .tagcloud a {
   text-transform: uppercase;
