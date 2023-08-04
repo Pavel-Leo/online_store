@@ -9,7 +9,7 @@
     {% endif %}
 {% endblock title %}
 {% block content %}
-<br>
+    <br>
     {% block style %}
         <style>
             form label {
@@ -53,51 +53,63 @@
                                     <span>Сумма заказа</span>
                                     <span>{{ cart.get_total_price }} &#8381;</span>
                                 </p>
-							</p>
-                                <p class="d-flex">
-                                    <span>Доставка</span>
-                                    <span>350.00 &#8381;</span>
-                                </p>
-                                {% comment %} <p class="d-flex">
+                            </p>
+                            <p class="d-flex">
+                                <span>Доставка</span>
+                                <span>350.00 &#8381;</span>
+                            </p>
+                            {% comment %} <p class="d-flex">
                                     <span>Discount</span>
                                     <span>0.00 &#8381;</span>
-                                </p> {% endcomment %}
-                                <hr>
-                                <p class="d-flex total-price">
-                                    <span>Итого:</span>
-                                    <span>{{ price_with_delivery }} &#8381;</span></span>
-                                </p>
-                            </div>
-                        </div>
-                        <div class="col-md-6 d-flex">
-                            <div class="cart-detail bg-light p-3 p-md-4">
-								<h3 class="billing-heading mb-4">Заполните поля</h3>
-                                {% if form.errors %}
-                                    {% for field in form %}
-                                        {% for error in field.errors %}<div class="alert alert-danger">{{ error|escape }}</div>{% endfor %}
-                                    {% endfor %}
-                                    {% for error in form.non_field_errors %}<div class="alert alert-danger">{{ error|escape }}</div>{% endfor %}
-                                {% endif %}
-                                <form method="post" class="class="order-form form-styled"">
-                                    {% csrf_token %}
-                                    {{ form.as_p }}
-                                    <div class="form-check">
-                                        <input type="checkbox" class="form-check-input" id="id_agree" name="agree" required>
-                                        <label class="form-check-label" for="id_agree" style="color: black;">Согласие на обработку персональных данных.<br>Настоящим я подтверждаю, что я ознакомлен и согласен с <a href="{% url 'shop:public_offer' %}" style="color: #000; text-decoration: underline"target="_blank"> условиями оферты </a> и <a href="#" style="color: #000; text-decoration: underline" target="_blank"> политикой конфиденциальности.</a></label>
-                                        {% if form.errors.agree %}
-                                            <div class="invalid-feedback d-block">{{ form.errors.agree }}</div>
-                                        {% endif %}
-                                    </div>
-                                    <p>
-                                        <button type="submit" class="btn btn-primary py-3 px-4">Оформить заказ</button>
-                                    </p>
-                                </form>
-                            </div>
+                            </p> {% endcomment %}
+                            <hr>
+                            <p class="d-flex total-price">
+                                <span>Итого:</span>
+                                <span>{{ price_with_delivery }} &#8381;</span></span>
+                            </p>
                         </div>
                     </div>
-                    <!-- .col-md-8 -->
+                    <div class="col-md-6 d-flex">
+                        <div class="cart-detail bg-light p-3 p-md-4">
+                            <h3 class="billing-heading mb-4">Заполните поля</h3>
+                            {% if form.errors %}
+                                {% for field in form %}
+                                    {% for error in field.errors %}<div class="alert alert-danger">{{ error|escape }}</div>{% endfor %}
+                                {% endfor %}
+                                {% for error in form.non_field_errors %}<div class="alert alert-danger">{{ error|escape }}</div>{% endfor %}
+                            {% endif %}
+                            <form method="post" class="class="order-form form-styled"">
+                                {% csrf_token %}
+                                {{ form.as_p }}
+                                <div class="form-check">
+                                    <input type="checkbox"
+                                           class="form-check-input"
+                                           id="id_agree"
+                                           name="agree"
+                                           required>
+                                    <label class="form-check-label" for="id_agree" style="color: black;">
+                                        Согласие на обработку персональных данных.
+                                        <br>
+                                        Настоящим я подтверждаю, что я ознакомлен и согласен с <a href="{% url 'shop:public_offer' %}"
+    style="color: #000;
+           text-decoration: underline"
+    target="_blank">условиями оферты</a> и <a href="#"
+    style="color: #000;
+           text-decoration: underline"
+    target="_blank">политикой конфиденциальности.</a>
+                                    </label>
+                                    {% if form.errors.agree %}<div class="invalid-feedback d-block">{{ form.errors.agree }}</div>{% endif %}
+                                </div>
+                                <p>
+                                    <button type="submit" class="btn btn-primary py-3 px-4">Оформить заказ</button>
+                                </p>
+                            </form>
+                        </div>
+                    </div>
                 </div>
+                <!-- .col-md-8 -->
             </div>
-		</div>
-        <!-- .section -->
-    {% endblock content %}
+        </div>
+    </div>
+    <!-- .section -->
+{% endblock content %}

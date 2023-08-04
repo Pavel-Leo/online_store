@@ -1,20 +1,20 @@
 {% extends "base.html" %}
 {% load thumbnail %}
 {% load static %}
-
 {% block title %}
     {{ title }}
 {% endblock title %}
-
 {% block content %}
-    <div class="hero-wrap hero-bread" style="background-image: url({% static 'images/bg_6.jpg' %})">
-        <div class="container">
-        </div>
+    <div class="hero-wrap hero-bread"
+         style="background-image: url({% static 'images/bg_6.jpg' %})">
+        <div class="container"></div>
     </div>
-
     <div class="container py-5">
         <div style="margin-bottom: 10px;">
-            <span style="color: #000; font-weight: bold; font-size: 1.8rem; line-height: 2.5;">Статьи:</span>
+            <span style="color: #000;
+                         font-weight: bold;
+                         font-size: 1.8rem;
+                         line-height: 2.5">Статьи:</span>
         </div>
         <br>
         {% for post in page_obj %}
@@ -31,13 +31,13 @@
                     <h2 style="font-size: 1.5em; font-weight: bold; color: black;">{{ post.title }}</h2>
                     <p style="color: black; margin-bottom: 40px">{{ post.text|safe|linebreaks|truncatewords:35 }}</p>
                     <p class="link-read-post">
-                        <a class="btn btn-primary" href="{% url 'posts:post_detail' post.slug %}"><strong>Читать далее</strong></a>
+                        <a class="btn btn-primary"
+                           href="{% url 'posts:post_detail' post.slug %}"><strong>Читать далее</strong></a>
                     </p>
                 </div>
             </article>
             {% if not forloop.last %}<hr>{% endif %}
         {% endfor %}
-
         {% include "shop/includes/paginator_list.html" %}
     </div>
 {% endblock content %}

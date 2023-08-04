@@ -21,10 +21,13 @@ def order_created(order_id):
     subject = f"Заказ № {order.id}"
     message = (
         f"Дорогой {order.Имя},\n\n"
-        f"Ваш заказ успешно оформлен. "
+        "Ваш заказ успешно оформлен. "
         f"Номер Вашего заказа: {order.id}."
     )
     mail_sent = send_mail(
-        subject, message, "fionit.2079@gmail.com", [order.email, "fionit.2079@gmail.com"]
+        subject,
+        message,
+        "fionit.2079@gmail.com",
+        [order.email, "fionit.2079@gmail.com"],
     )
     return mail_sent

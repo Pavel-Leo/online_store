@@ -1,8 +1,7 @@
 from django.shortcuts import get_object_or_404, render
-
 from posts.models import Post
-from shop.models import Category
 from shop.common import post_pagination_func
+from shop.models import Category
 
 
 def post_list(request):
@@ -27,4 +26,3 @@ def post_detail(request, post_slug):
         "categories": categories,
     }
     return render(request, "post_detail.html", context)
-
