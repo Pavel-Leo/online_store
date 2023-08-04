@@ -1,9 +1,8 @@
-from decimal import Decimal
-
 import stripe
 from django.conf import settings
 from django.shortcuts import get_object_or_404, redirect, render, reverse
 from orders.models import Order
+from shop.models import Category
 
 stripe.api_key = settings.STRIPE_SECRET_KEY
 stripe.api_version = settings.STRIPE_API_VERSION
@@ -40,8 +39,12 @@ def payment_process(request):
 
 
 def payment_completed(request):
-    return render(request, "payment/completed.html")
+    categories = Category.objects.all()
+    context = {"categories": categories}
+    return render(request, "payment/completed.html", context)
 
 
 def payment_canceled(request):
-    return render(request, "payment/canceled.html")
+    categories = Category.objects.all()
+    context = {"categories": categories}
+    return render(request, "payment/canceled.html", context)

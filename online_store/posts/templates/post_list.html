@@ -13,6 +13,10 @@
     </div>
 
     <div class="container py-5">
+        <div style="margin-bottom: 10px;">
+            <span style="color: #000; font-weight: bold; font-size: 1.8rem; line-height: 2.5;">Статьи:</span>
+        </div>
+        <br>
         {% for post in page_obj %}
             <article style="display: flex; align-items: flex-start;">
                 <div style="flex: 0 0 200px; margin-right: 10px;">
@@ -25,14 +29,16 @@
                         <li style="color: black; margin-bottom: 10px;">Дата публикации: {{ post.pub_date|date:"d E Y" }}</li>
                     </ul>
                     <h2 style="font-size: 1.5em; font-weight: bold; color: black;">{{ post.title }}</h2>
-                    <p style="color: black; margin-bottom: -40px">{{ post.text|safe|linebreaks|truncatewords:35 }}</p>
+                    <p style="color: black; margin-bottom: 40px">{{ post.text|safe|linebreaks|truncatewords:35 }}</p>
                     <p class="link-read-post">
                         <a class="btn btn-primary" href="{% url 'posts:post_detail' post.slug %}"><strong>Читать далее</strong></a>
                     </p>
                 </div>
-            </article>
+
             {% if not forloop.last %}<hr>{% endif %}
         {% endfor %}
-        {% include "shop/includes/paginator_list.html" %}
     </div>
+        {% include "shop/includes/paginator_list.html" %}
+
+    </article>
 {% endblock content %}

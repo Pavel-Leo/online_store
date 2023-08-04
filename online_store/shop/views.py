@@ -2,17 +2,10 @@ from cart.forms import CartAddProductForm
 from django.conf import settings
 from django.core.mail import send_mail
 from django.shortcuts import get_object_or_404, render
-
 from shop.forms import FeedbackForm
 
 from .common import paginator_func
 from .models import Category, Product
-
-# def index(request):
-#     template = "shop/shop.html"
-#     title = "Главная страница"
-#     context = {"title": title}
-#     return render(request, template, context)
 
 
 def product_list(request, category_slug=None):
@@ -51,31 +44,45 @@ def product_detail(request, id, slug):
 
 
 def about(request):
-    return render(request, "about/about.html")
+    categories = Category.objects.all()
+    context = {"categories": categories}
+    return render(request, "about/about.html", context)
 
 
 def contacts(request):
-    return render(request, "contacts/contacts.html")
+    categories = Category.objects.all()
+    context = {"categories": categories}
+    return render(request, "contacts/contacts.html", context)
 
 
 def delivery(request):
-    return render(request, "about/delivery.html")
+    categories = Category.objects.all()
+    context = {"categories": categories}
+    return render(request, "about/delivery.html", context)
 
 
 def public_offer(request):
-    return render(request, "about/public_offer.html")
+    categories = Category.objects.all()
+    context = {"categories": categories}
+    return render(request, "about/public_offer.html", context)
 
 
 def privacy_policy(request):
-    return render(request, "about/privacy_policy.html")
+    categories = Category.objects.all()
+    context = {"categories": categories}
+    return render(request, "about/privacy_policy.html", context)
 
 
 def how_to_buy(request):
-    return render(request, "about/how_to_buy.html")
+    categories = Category.objects.all()
+    context = {"categories": categories}
+    return render(request, "about/how_to_buy.html", context)
 
 
 def return_and_exchange(request):
-    return render(request, "about/return_and_exchange.html")
+    categories = Category.objects.all()
+    context = {"categories": categories}
+    return render(request, "about/return_and_exchange.html", context)
 
 
 def feedback_view(request):
@@ -90,12 +97,11 @@ def feedback_view(request):
                 f' {email}'
             )
             from_email = settings.EMAIL_HOST_USER
-            to_email = [
-                settings.EMAIL_HOST_USER
-            ]
+            to_email = [settings.EMAIL_HOST_USER]
             send_mail(
                 subject, message, from_email, to_email, fail_silently=False
             )
+            return render(request, 'contacts/success.html', {'form': form})
     else:
         form = FeedbackForm()
     return render(request, 'contacts/contacts.html', {'form': form})
