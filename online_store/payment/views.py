@@ -1,5 +1,8 @@
+from typing import Dict
+
 import stripe
 from django.conf import settings
+from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import get_object_or_404, redirect, render, reverse
 from orders.models import Order
 from shop.models import Category
@@ -8,13 +11,13 @@ stripe.api_key = settings.STRIPE_SECRET_KEY
 stripe.api_version = settings.STRIPE_API_VERSION
 
 
-def payment_process(request):
-    order_id = request.session.get("order_id", None)
-    order = get_object_or_404(Order, id=order_id)
+def payment_process(request) -> HttpResponseRedirect:
+    order_id: str = request.session.get("order_id", None)
+    order: Order = get_object_or_404(Order, id=order_id)
     if request.method == "POST":
         success_url = request.build_absolute_uri(reverse("payment:completed"))
         cancel_url = request.build_absolute_uri(reverse("payment:canceled"))
-        session_data = {
+        session_data: Dict[str, any] = {
             "mode": "payment",
             "client_reference_id": order.id,
             "success_url": success_url,
@@ -38,13 +41,13 @@ def payment_process(request):
         return render(request, "payment/process.html", locals())
 
 
-def payment_completed(request):
-    categories = Category.objects.all()
-    context = {"categories": categories}
+def payment_completed(request) -> HttpResponse:
+    categories: Category = Category.objects.all()
+    context: Dict[str, Category] = {"categories": categories}
     return render(request, "payment/completed.html", context)
 
 
-def payment_canceled(request):
-    categories = Category.objects.all()
-    context = {"categories": categories}
+def payment_canceled(request) -> HttpResponse:
+    categories: Category = Category.objects.all()
+    context: Dict[str, Category] = {"categories": categories}
     return render(request, "payment/canceled.html", context)

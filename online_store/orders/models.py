@@ -1,3 +1,6 @@
+import decimal
+from typing import Tuple
+
 from django.db import models
 from shop.models import Product
 
@@ -16,14 +19,14 @@ class Order(models.Model):
     stripe_id = models.CharField(max_length=250, blank=True)
 
     class Meta:
-        ordering = ("-created",)
-        verbose_name = "Заказ"
-        verbose_name_plural = "Заказы"
+        ordering: Tuple[str] = ("-created",)
+        verbose_name: str = "Заказ"
+        verbose_name_plural: str = "Заказы"
 
-    def __str__(self):
+    def __str__(self) -> str:
         return "Order {}".format(self.id)
 
-    def get_total_cost(self):
+    def get_total_cost(self) -> int:
         return sum(item.get_cost() for item in self.items.all()) + 350
 
 
@@ -37,8 +40,8 @@ class OrderItem(models.Model):
     price = models.DecimalField(max_digits=10, decimal_places=2)
     quantity = models.PositiveIntegerField(default=1)
 
-    def __str__(self):
+    def __str__(self) -> str:
         return str(self.id)
 
-    def get_cost(self):
+    def get_cost(self) -> decimal:
         return self.price * self.quantity

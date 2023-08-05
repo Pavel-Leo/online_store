@@ -1,4 +1,5 @@
 from audioop import reverse
+from typing import Tuple
 
 from django.db import models
 
@@ -26,11 +27,11 @@ class Post(models.Model):
     available = models.BooleanField(default=True, verbose_name="Доступность")
 
     class Meta:
-        ordering = ("-pub_date",)
-        verbose_name = "Пост"
-        verbose_name_plural = "Посты"
+        ordering: Tuple[str] = ("-pub_date",)
+        verbose_name: str = "Пост"
+        verbose_name_plural: str = "Посты"
 
-    def __str__(self):
+    def __str__(self) -> str:
         return self.title
 
     def get_absolute_url(self):

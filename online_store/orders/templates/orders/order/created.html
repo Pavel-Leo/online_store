@@ -2,10 +2,11 @@
 {% load static %}
 {% block title %}
   Заказ размещен
-{% endblock %}
-
+{% endblock title %}
 {% block content %}
-<h1>Спасибо за Ваш заказ</h1>
-<p>Ваш заказ был успешно размещен. Номер вашего заказа:
-    <strong>{{ order.id }}</strong>.</p>
+  <h1>Спасибо за Ваш заказ</h1>
+  <p>
+    Ваш заказ был успешно размещен. Номер вашего заказа:
+    <strong>{{ order.id }}</strong>.
+  </p>
 {% endblock content %}

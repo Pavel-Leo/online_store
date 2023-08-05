@@ -1,7 +1,9 @@
+from typing import Tuple
+
 from django.db import models
+from django.http import HttpResponse, HttpResponseRedirect
 from django.urls import reverse
 from django.utils import timezone
-
 
 
 class Category(models.Model):
@@ -17,14 +19,14 @@ class Category(models.Model):
     )
 
     class Meta:
-        ordering = ("created_at",)
-        verbose_name = "Категория"
-        verbose_name_plural = "Категории"
+        ordering: Tuple[str] = ("created_at",)
+        verbose_name: str = "Категория"
+        verbose_name_plural: str = "Категории"
 
-    def get_absolute_url(self):
+    def get_absolute_url(self) -> HttpResponse:
         return reverse("shop:product_list_by_category", args=[self.slug])
 
-    def __str__(self):
+    def __str__(self) -> str:
         return self.name
 
 
@@ -57,13 +59,13 @@ class Product(models.Model):
     )
 
     class Meta:
-        ordering = ("name",)
-        index_together = (("id", "slug"),)
-        verbose_name = "Продукт"
-        verbose_name_plural = "Продукты"
+        ordering: Tuple[str] = ("name",)
+        index_together: Tuple[Tuple[str]] = (("id", "slug"),)
+        verbose_name: str = "Продукт"
+        verbose_name_plural: str = "Продукты"
 
-    def get_absolute_url(self):
+    def get_absolute_url(self) -> HttpResponse:
         return reverse("shop:product_detail", args=[self.id, self.slug])
 
-    def __str__(self):
+    def __str__(self) -> str:
         return self.name

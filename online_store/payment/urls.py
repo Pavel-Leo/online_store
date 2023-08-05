@@ -1,9 +1,8 @@
 from django.urls import path
 
-from . import views
-from . import webhooks
+from . import views, webhooks
 
-app_name = "payment"
+app_name: str = "payment"
 
 urlpatterns = [
     path("process/", views.payment_process, name="process"),

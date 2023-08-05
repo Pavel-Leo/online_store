@@ -1,6 +1,5 @@
 {% extends "base.html" %}
 {% load static %}
-<!-- END nav -->
 {% block title %}
     {% if category %}
         {{ category.name }}
@@ -78,7 +77,7 @@
                                 {% endfor %}
                                 {% for error in form.non_field_errors %}<div class="alert alert-danger">{{ error|escape }}</div>{% endfor %}
                             {% endif %}
-                            <form method="post" class="class="order-form form-styled"">
+                            <form method="post" class="order-form form-styled">
                                 {% csrf_token %}
                                 {{ form.as_p }}
                                 <div class="form-check">

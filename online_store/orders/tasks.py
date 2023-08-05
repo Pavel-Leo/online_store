@@ -12,14 +12,14 @@ APP_EMAIL = os.getenv("EMAIL_HOST_USER")
 
 
 # @shared_task
-def order_created(order_id):
+def order_created(order_id) -> int:
     """
     Задание по отправке уведомления по электронной почте
     при успешном создании заказа.
     """
-    order = Order.objects.get(id=order_id)
-    subject = f"Заказ № {order.id}"
-    message = (
+    order: Order = Order.objects.get(id=order_id)
+    subject: str = f"Заказ № {order.id}"
+    message: str = (
         f"Дорогой {order.Имя},\n\n"
         "Ваш заказ успешно оформлен. "
         f"Номер Вашего заказа: {order.id}."

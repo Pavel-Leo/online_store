@@ -1,4 +1,4 @@
-{% extends 'base.html' %}
+{% extends "base.html" %}
 {% load static %}
 {% block title %}
     Оплата заказа
@@ -64,4 +64,8 @@
                         {% csrf_token %}
                     </form>
                     <br>
-                {% endblock content %}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock content %}
