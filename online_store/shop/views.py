@@ -49,25 +49,17 @@ def product_detail(request, id, slug):
         cat_1 = get_object_or_404(Category, name="Посуда")
         cat_2 = get_object_or_404(Category, name="Кофемолки")
         cat_3 = get_object_or_404(Category, name="Контейнеры")
-        context = {
-            "cat_1": cat_1,
-            "cat_2": cat_2,
-            "cat_3": cat_3,
-            "product": product,
-            "cart_product_form": cart_product_form,
-        }
     else:
         cat_1 = get_object_or_404(Category, name="Кофе зерновой")
         cat_2 = get_object_or_404(Category, name="Кофе молотый")
         cat_3 = get_object_or_404(Category, name="Чай черный листовой")
-        context = {
-            "cat_1": cat_1,
-            "cat_2": cat_2,
-            "cat_3": cat_3,
-            "product": product,
-            "cart_product_form": cart_product_form,
-        }
-
+    context = {
+        "cat_1": cat_1,
+        "cat_2": cat_2,
+        "cat_3": cat_3,
+        "product": product,
+        "cart_product_form": cart_product_form,
+    }
     return render(request, "shop/product/detail.html", context)
 
 
