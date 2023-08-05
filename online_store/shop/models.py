@@ -12,6 +12,9 @@ class Category(models.Model):
         max_length=200, unique=True, db_index=True, verbose_name="URL"
     )
     created_at = models.DateTimeField(default=timezone.now)
+    image = models.ImageField(
+        upload_to="categories/%Y/%m/%d", blank=True, verbose_name="Изображение"
+    )
 
     class Meta:
         ordering = ("created_at",)

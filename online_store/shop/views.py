@@ -9,6 +9,13 @@ from shop.forms import FeedbackForm
 from .common import paginator_func
 from .models import Category, Product
 
+PRODUCT_CATEGORIES = [
+    "Кофе молотый",
+    "Кофе зерновой",
+    "Чай черный листовой",
+    "Чай зеленый листовой",
+]
+
 
 def product_list(request, category_slug=None):
     category = None
@@ -38,16 +45,29 @@ def product_list(request, category_slug=None):
 def product_detail(request, id, slug):
     product = get_object_or_404(Product, id=id, slug=slug, available=True)
     cart_product_form = CartAddProductForm()
-    dishware = get_object_or_404(Category, name="Посуда")
-    grinder = get_object_or_404(Category, name="Кофемолки")
-    containers = get_object_or_404(Category, name="Контейнеры для хранения")
-    context = {
-        "containers": containers,
-        "dishware": dishware,
-        "grinder": grinder,
-        "product": product,
-        "cart_product_form": cart_product_form,
-    }
+    if product.category.name in PRODUCT_CATEGORIES:
+        cat_1 = get_object_or_404(Category, name="Посуда")
+        cat_2 = get_object_or_404(Category, name="Кофемолки")
+        cat_3 = get_object_or_404(Category, name="Контейнеры")
+        context = {
+            "cat_1": cat_1,
+            "cat_2": cat_2,
+            "cat_3": cat_3,
+            "product": product,
+            "cart_product_form": cart_product_form,
+        }
+    else:
+        cat_1 = get_object_or_404(Category, name="Кофе зерновой")
+        cat_2 = get_object_or_404(Category, name="Кофе молотый")
+        cat_3 = get_object_or_404(Category, name="Чай черный листовой")
+        context = {
+            "cat_1": cat_1,
+            "cat_2": cat_2,
+            "cat_3": cat_3,
+            "product": product,
+            "cart_product_form": cart_product_form,
+        }
+
     return render(request, "shop/product/detail.html", context)
 
 

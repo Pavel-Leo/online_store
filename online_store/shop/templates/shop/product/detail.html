@@ -12,7 +12,7 @@
                     {% comment %} {% thumbnail product.image "100x100" crop="left" upscale=True as im %}
 						<img class="card-img my-2" src="{{ im.url }}">
                     {% endthumbnail %} {% endcomment %}
-                <img src= {{ product.image.url }}  class="img-fluid" alt="Colorlib Template"></a>
+                <img src= {{ product.image.url }} class="img-fluid" alt="Colorlib Template"></a>
             </div>
             <div class="col-lg-6 product-details pl-md-5 ftco-animate">
                 <h3>{{ product.name }}</h3>
@@ -41,13 +41,13 @@
                         <div class="col-sm col-md-6 col-lg ftco-animate" style="padding: 0 70px;">
                             <div class="text py-3 px-3">
                                     <h3>
-                                        <a href="{{ dishware.get_absolute_url }}"><strong>{{ dishware.name }}</strong></a>
+                                        <a href="{{ cat_1.get_absolute_url }}"><strong>{{ cat_1.name }}</strong></a>
                                     </h3>
                                 </div>
                             <div class="product">
-                                <a href="{{ dishware.get_absolute_url }}" class="img-prod">
+                                <a href="{{ cat_1.get_absolute_url }}" class="img-prod">
                                     <img class="img-fluid"
-                                         src="{% static 'images/product-2.jpg' %}"
+                                         src= {{ cat_1.image.url }}
                                          alt="Colorlib Template">
                                     <div class="overlay"></div>
                                 </a>
@@ -57,13 +57,13 @@
                         <div class="col-sm col-md-6 col-lg ftco-animate" style="padding: 0 70px;">
                             <div class="text py-3 px-3">
                                     <h3>
-                                        <a href="{{ grinder.get_absolute_url }}"><strong>{{ grinder.name }}</strong></a>
+                                        <a href="{{ cat_2.get_absolute_url }}"><strong>{{ cat_2.name }}</strong></a>
                                     </h3>
                                 </div>
                             <div class="product">
-                                <a href="{{ grinder.get_absolute_url }}" class="img-prod">
+                                <a href="{{ cat_2.get_absolute_url }}" class="img-prod">
                                     <img class="img-fluid"
-                                         src="{% static 'images/product-3.jpg' %}"
+                                         src= {{ cat_2.image.url }}
                                          alt="Colorlib Template">
                                     <div class="overlay"></div>
                                 </a>
@@ -72,13 +72,13 @@
                         <div class="col-sm col-md-5 col-lg ftco-animate" style="padding: 0 70px;">
                             <div class="text py-3 px-3">
                                     <h3>
-                                        <a href="{{ containers.get_absolute_url }}"><strong>Контейнеры</strong></a>
+                                        <a href="{{ cat_3.get_absolute_url }}"><strong>{{ cat_3.name }}</strong></a>
                                     </h3>
                                         </div>
                             <div class="product">
-                                <a href="{{ containers.get_absolute_url }}" class="img-prod">
+                                <a href="{{ cat_3.get_absolute_url }}" class="img-prod">
                                     <img class="img-fluid"
-                                         src="{% static 'images/product-1.jpg' %}"
+                                         src= {{ cat_3.image.url }}
                                          alt="Colorlib Template">
                                     <div class="overlay"></div>
                                 </a>
