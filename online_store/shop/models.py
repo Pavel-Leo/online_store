@@ -1,5 +1,7 @@
 from django.db import models
 from django.urls import reverse
+from django.utils import timezone
+
 
 
 class Category(models.Model):
@@ -9,9 +11,10 @@ class Category(models.Model):
     slug = models.SlugField(
         max_length=200, unique=True, db_index=True, verbose_name="URL"
     )
+    created_at = models.DateTimeField(default=timezone.now)
 
     class Meta:
-        ordering = ("name",)
+        ordering = ("created_at",)
         verbose_name = "Категория"
         verbose_name_plural = "Категории"
 
