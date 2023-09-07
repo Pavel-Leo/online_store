@@ -25,7 +25,7 @@ def order_create(request) -> HttpResponseRedirect:
                     quantity=item["quantity"],
                 )
             cart.clear()
-            # order_created.delay(order.id)
+            #order_created.delay(order.id)
             order_created(order.id)
             request.session["order_id"] = order.id
             return redirect(reverse('payment:process'))

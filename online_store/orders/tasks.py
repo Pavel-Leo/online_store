@@ -1,6 +1,6 @@
 import os
 
-# from celery import shared_task
+from celery import shared_task
 from django.core.mail import send_mail
 from dotenv import load_dotenv
 
@@ -11,7 +11,7 @@ load_dotenv()
 APP_EMAIL = os.getenv("EMAIL_HOST_USER")
 
 
-# @shared_task
+@shared_task
 def order_created(order_id) -> int:
     """
     Задание по отправке уведомления по электронной почте
@@ -27,7 +27,7 @@ def order_created(order_id) -> int:
     mail_sent = send_mail(
         subject,
         message,
-        "fionit.2079@gmail.com",
-        [order.email, "fionit.2079@gmail.com"],
+        APP_EMAIL,
+        [order.email, APP_EMAIL],
     )
     return mail_sent

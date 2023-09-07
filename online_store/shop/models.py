@@ -59,7 +59,7 @@ class Product(models.Model):
     )
 
     class Meta:
-        ordering: Tuple[str] = ("name",)
+        ordering: Tuple[str] = ("created",)
         index_together: Tuple[Tuple[str]] = (("id", "slug"),)
         verbose_name: str = "Продукт"
         verbose_name_plural: str = "Продукты"
