@@ -10,6 +10,7 @@ class OrderItemInline(admin.TabularInline):
 
 @admin.register(Order)
 class OrderAdmin(admin.ModelAdmin):
+    """Отображение заказов в админ панели"""
     list_display = [
         "id",
         "name",

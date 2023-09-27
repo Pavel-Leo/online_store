@@ -12,6 +12,7 @@ stripe.api_version = settings.STRIPE_API_VERSION
 
 
 def payment_process(request) -> HttpResponseRedirect:
+    """Функция для процесса оплаты."""
     order_id: str = request.session.get("order_id", None)
     order: Order = get_object_or_404(Order, id=order_id)
     if request.method == "POST":
@@ -42,12 +43,14 @@ def payment_process(request) -> HttpResponseRedirect:
 
 
 def payment_completed(request) -> HttpResponse:
+    """Функция для отображения успешной оплаты."""
     categories: Category = Category.objects.all()
     context: Dict[str, Category] = {"categories": categories}
     return render(request, "payment/completed.html", context)
 
 
 def payment_canceled(request) -> HttpResponse:
+    """Функция для отображения отмены оплаты."""
     categories: Category = Category.objects.all()
     context: Dict[str, Category] = {"categories": categories}
     return render(request, "payment/canceled.html", context)

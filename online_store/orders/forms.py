@@ -6,6 +6,7 @@ from .models import Order
 
 
 class OrderCreateForm(forms.ModelForm):
+    """Форма создания заказа."""
     class Meta:
         model = Order
         fields: List[str] = [

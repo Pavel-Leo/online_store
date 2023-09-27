@@ -5,12 +5,14 @@ from .models import Category, Product
 
 @admin.register(Category)
 class CategoryAdmin(admin.ModelAdmin):
+    """Класс для отображения категорий товаров в админ панели"""
     list_display = ("name", "slug")
     prepopulated_fields = {"slug": ("name",)}
 
 
 @admin.register(Product)
 class ProductAdmin(admin.ModelAdmin):
+    """Класс для отображения товаров в админ панели"""
     list_display = ("name", "slug", "price", "available", "created", "updated")
     list_filter = ("available", "created", "updated")
     list_editable = ("price", "available")

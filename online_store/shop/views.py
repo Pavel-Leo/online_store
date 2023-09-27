@@ -19,6 +19,7 @@ PRODUCT_CATEGORIES = [
 
 
 def product_list(request, category_slug=None):
+    """Функция для отображения списка товаров."""
     category = None
     categories = Category.objects.all()
     products = Product.objects.filter(available=True).select_related(
@@ -44,6 +45,7 @@ def product_list(request, category_slug=None):
 
 
 def product_detail(request, id, slug) -> HttpResponse:
+    """Функция отображения товара."""
     product: Product = get_object_or_404(
         Product, id=id, slug=slug, available=True
     )
@@ -71,48 +73,56 @@ def product_detail(request, id, slug) -> HttpResponse:
 
 
 def about(request) -> HttpResponse:
+    """Функция для отображения страницы О нас."""
     categories: Category = Category.objects.all()
     context: Dict[str, Category] = {"categories": categories}
     return render(request, "about/about.html", context)
 
 
 def contacts(request) -> HttpResponse:
+    """Функция для отображения страницы Контакты."""
     categories: Category = Category.objects.all()
     context: Dict[str, Category] = {"categories": categories}
     return render(request, "contacts/contacts.html", context)
 
 
 def delivery(request) -> HttpResponse:
+    """Функция для отображения страницы Доставка."""
     categories: Category = Category.objects.all()
     context: Dict[str, Category] = {"categories": categories}
     return render(request, "about/delivery.html", context)
 
 
 def public_offer(request) -> HttpResponse:
+    """Функция для отображения страницы Публичная оферта."""
     categories: Category = Category.objects.all()
     context: Dict[str, Category] = {"categories": categories}
     return render(request, "about/public_offer.html", context)
 
 
 def privacy_policy(request) -> HttpResponse:
+    """Функция для отображения страницы Политика конфиденциальности."""
     categories: Category = Category.objects.all()
     context: Dict[str, Category] = {"categories": categories}
     return render(request, "about/privacy_policy.html", context)
 
 
 def how_to_buy(request) -> HttpResponse:
+    """Функция для отображения страницы Как купить."""
     categories: Category = Category.objects.all()
     context: Dict[str, Category] = {"categories": categories}
     return render(request, "about/how_to_buy.html", context)
 
 
 def return_and_exchange(request) -> HttpResponse:
+    """Функция для отображения страницы Возврат и обмен."""
     categories: Category = Category.objects.all()
     context: Dict[str, Category] = {"categories": categories}
     return render(request, "about/return_and_exchange.html", context)
 
 
 def feedback_view(request) -> HttpResponse:
+    """Функция для отображения страницы Обратная связь."""
     if request.method == 'POST':
         form = FeedbackForm(request.POST)
         if form.is_valid():

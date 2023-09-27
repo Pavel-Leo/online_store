@@ -8,9 +8,9 @@ PRODUCT_QUANTITY_CHOICES: List[Tuple[int, str]] = [
 
 
 class CartAddProductForm(forms.Form):
+    """Форма добавления товара в корзину по количеству."""
     quantity = forms.TypedChoiceField(
         choices=PRODUCT_QUANTITY_CHOICES,
-        coerce=int,  # видимо ошибка, найти переменную
         label="Количество",
     )
     update = forms.BooleanField(

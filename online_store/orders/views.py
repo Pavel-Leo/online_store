@@ -11,6 +11,7 @@ from .tasks import order_created
 
 
 def order_create(request) -> HttpResponseRedirect:
+    """Функция для создания заказа."""
     cart: Cart = Cart(request)
     price_with_delivery: Decimal = cart.get_total_price() + 350
     if request.method == "POST":

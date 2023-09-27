@@ -9,6 +9,7 @@ from shop.models import Category
 
 
 def post_list(request) -> HttpResponse:
+    """Функция для отображения списка статей блога."""
     title: str = "Статьи блога"
     posts: Post = Post.objects.filter(available=True).all()
     categories: Category = Category.objects.all()
@@ -22,6 +23,7 @@ def post_list(request) -> HttpResponse:
 
 
 def post_detail(request, post_slug) -> HttpResponse:
+    """Функция для отображения отдельной статьи блога."""
     post: Post = get_object_or_404(Post, slug=post_slug)
     categories: Category = Category.objects.all()
     context: Dict[str, any] = {

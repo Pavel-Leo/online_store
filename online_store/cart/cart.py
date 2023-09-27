@@ -56,16 +56,16 @@ class Cart(object):
 
     def __len__(self) -> int:
         """Возвращает общее количество товаров в корзине."""
-        # return sum(item["quantity"] for item in self.cart.values())
         return len(self.cart)
 
     def get_total_price(self) -> Decimal:
+        """Возвращает общую стоимость товаров в корзине."""
         return sum(
             Decimal(item["price"]) * item["quantity"]
             for item in self.cart.values()
         )
 
     def clear(self) -> None:
-        """Очищаеи корзину."""
+        """Очищение корзины."""
         del self.session[settings.CART_SESSION_ID]
         self.save()

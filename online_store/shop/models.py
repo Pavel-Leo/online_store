@@ -1,12 +1,13 @@
 from typing import Tuple
 
 from django.db import models
-from django.http import HttpResponse, HttpResponseRedirect
+from django.http import HttpResponse
 from django.urls import reverse
 from django.utils import timezone
 
 
 class Category(models.Model):
+    """Модель категории товара"""
     name = models.CharField(
         max_length=200, db_index=True, verbose_name="Название"
     )
@@ -23,14 +24,15 @@ class Category(models.Model):
         verbose_name: str = "Категория"
         verbose_name_plural: str = "Категории"
 
-    def get_absolute_url(self) -> HttpResponse:
-        return reverse("shop:product_list_by_category", args=[self.slug])
-
     def __str__(self) -> str:
         return self.name
 
+    def get_absolute_url(self) -> HttpResponse:
+        return reverse("shop:product_list_by_category", args=[self.slug])
+
 
 class Product(models.Model):
+    """Модель товара"""
     category = models.ForeignKey(
         Category,
         related_name="products",
@@ -64,8 +66,8 @@ class Product(models.Model):
         verbose_name: str = "Продукт"
         verbose_name_plural: str = "Продукты"
 
-    def get_absolute_url(self) -> HttpResponse:
-        return reverse("shop:product_detail", args=[self.id, self.slug])
-
     def __str__(self) -> str:
         return self.name
+
+    def get_absolute_url(self) -> HttpResponse:
+        return reverse("shop:product_detail", args=[self.id, self.slug])

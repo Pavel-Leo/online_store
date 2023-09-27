@@ -3,8 +3,8 @@ from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import include, path
 
-# handler404 = "core.views.page_not_found"
-# handler403 = 'core.views.permission_denied'
+# handler404 = "core.views.page_not_found" здесь будет кастомная обработка ошиибки 404
+# handler403 = 'core.views.permission_denied'здесь будет кастомная обработка ошиибки 403
 
 urlpatterns = [
     path("admin/", admin.site.urls),

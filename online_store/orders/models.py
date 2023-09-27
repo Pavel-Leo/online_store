@@ -6,6 +6,7 @@ from shop.models import Product
 
 
 class Order(models.Model):
+    """Модель заказа"""
     name = models.CharField(max_length=50, verbose_name="Имя")
     last_name = models.CharField(max_length=50, verbose_name="Фамилия")
     email = models.EmailField()
@@ -27,10 +28,12 @@ class Order(models.Model):
         return "Order {}".format(self.id)
 
     def get_total_cost(self) -> int:
+        """Функция для вычисления общей стоимости заказа"""
         return sum(item.get_cost() for item in self.items.all()) + 350
 
 
 class OrderItem(models.Model):
+    """Модель товара в заказе"""
     order = models.ForeignKey(
         Order, related_name="items", on_delete=models.CASCADE
     )
@@ -44,4 +47,5 @@ class OrderItem(models.Model):
         return str(self.id)
 
     def get_cost(self) -> decimal:
+        """Функция для вычисления стоимости товара по количеству"""
         return self.price * self.quantity

@@ -16,6 +16,7 @@ from .forms import CartAddProductForm
 
 @require_POST
 def cart_add(request, product_id) -> HttpResponseRedirect:
+    """Функция для добавления товара в корзину."""
     cart: Cart = Cart(request)
     product: Product = get_object_or_404(Product, id=product_id)
     form: CartAddProductForm = CartAddProductForm(request.POST)
@@ -30,6 +31,7 @@ def cart_add(request, product_id) -> HttpResponseRedirect:
 
 
 def cart_remove(request, product_id) -> HttpResponseRedirect:
+    """Функция для удаления товара из корзины."""
     cart: Cart = Cart(request)
     product: Product = get_object_or_404(Product, id=product_id)
     cart.remove(product)
@@ -37,6 +39,7 @@ def cart_remove(request, product_id) -> HttpResponseRedirect:
 
 
 def cart_detail(request) -> HttpResponse:
+    """Функция для отображения содержимого корзины."""
     cart: Cart = Cart(request)
     categories: Category = Category.objects.all()
     context: Dict[str, any] = {"categories": categories, "cart": cart}

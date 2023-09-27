@@ -5,6 +5,7 @@ from django.db import models
 
 
 class Post(models.Model):
+    """Модель поста"""
     title = models.CharField(
         max_length=200,
         db_index=True,
