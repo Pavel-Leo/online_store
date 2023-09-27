@@ -9,10 +9,10 @@ class OrderCreateForm(forms.ModelForm):
     class Meta:
         model = Order
         fields: List[str] = [
-            "Имя",
-            "Фамилия",
+            "name",
+            "last_name",
             "email",
-            "Адрес",
-            "Индекс",
-            "Город",
+            "adress",
+            "postal_code",
+            "city",
         ]
