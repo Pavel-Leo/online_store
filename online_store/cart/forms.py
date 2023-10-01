@@ -11,6 +11,7 @@ class CartAddProductForm(forms.Form):
     """Форма добавления товара в корзину по количеству."""
     quantity = forms.TypedChoiceField(
         choices=PRODUCT_QUANTITY_CHOICES,
+        coerce=int,
         label="Количество",
     )
     update = forms.BooleanField(
